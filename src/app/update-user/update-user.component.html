@@ -1,0 +1,81 @@
+<header>
+    <div class="container">
+        <h5>Welcome : {{loggedUser}}</h5>
+    </div>
+    <nav>
+        <ul class="nav">
+            <li class="nav-item">
+                <a href="#" class="nav-link active" routerLink="/home">Home</a>
+            </li>
+            <li class="nav-item">
+                <a href="#" class="nav-link" routerLink="/addUser">Add User</a>
+            </li>
+            <li class="nav-item">
+                <a href="#" class="nav-link" routerLink="/reports">Reports</a>
+            </li>
+            <li class="nav-item">
+                <a href="#" class="nav-link" (click)="logOut()">Logout</a>
+            </li>
+
+        </ul>
+    </nav>
+</header>
+<div class="container">
+    <h3>Add User</h3>
+    <hr>
+    <form name="empform" #form="ngForm" autocomplete="off" (ngSubmit)="onSubmit(form)">
+    
+        <!--User ID---Hidden-->
+        <!-- <input type="hidden" name="EmployeeId" [(ngModel)]="empService.formData.EmployeeId"> -->
+    
+        <!--User Name-->
+        <div class="form-group">
+            <label for="">Full Name :</label>
+            <input type="text" name="Cname" #Cname="ngModel" [(ngModel)]="displayservice.formData.Cname"
+                class="form-control" placeholder="Enter Full Name" required minlength="6" maxlength="25"
+                [ngClass]="{'is-invalid':Cname.touched && Cname.invalid}" />
+    
+            <!--Employee name validation-->
+            <div class="validation-error" *ngIf="Cname.touched && Cname.invalid">
+                <div *ngIf="Cname.errors">
+                    Full Name is required!
+                </div>
+            </div>
+        </div>
+
+        <!--Occupation-->
+        <div class="form-group">
+            <label for="">Occupation :</label>
+            <input type="text" name="Occupation" #Occupation="ngModel" [(ngModel)]="displayservice.formData.Occupation"
+                class="form-control" placeholder="Enter Occupation" required minlength="6" maxlength="25"
+                [ngClass]="{'is-invalid':Occupation.touched && Occupation.invalid}" />
+    
+            <!--Occupation validation-->
+            <div class="validation-error" *ngIf="Occupation.touched && Occupation.invalid">
+                <div *ngIf="Occupation.errors">
+                    Full Name is required!
+                </div>
+            </div>
+        </div>
+        <!--Phone-->
+        <div class="form-group">
+            <label for="">Phone :</label>
+            <input type="text" name="Phone" #Phone="ngModel" [(ngModel)]="displayservice.formData.Phone"
+                class="form-control" placeholder="Enter Phone Number" required minlength="10" maxlength="10"
+                [ngClass]="{'is-invalid':Phone.touched && Phone.invalid}" />
+    
+            <!--Phone validation-->
+            <div class="validation-error" *ngIf="Phone.touched && Phone.invalid">
+                <div *ngIf="Phone.errors">
+                    Full Name is required!
+                </div>
+            </div>
+        </div>
+        <!--Submit-->
+        <br>
+        <div class="form-group">
+            <button type="submit" class="btn btn-lg btn-primary form-control"
+                [disabled]="!(form.valid && form.dirty)">Submit</button>
+        </div>
+    </form>
+</div>

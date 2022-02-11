@@ -1,0 +1,50 @@
+<header>
+<div class="container">
+    <h5>Welcome : {{loggedUser}}</h5>
+</div>
+<nav>
+    <ul class="nav">
+            <li class="nav-item">
+                <a href="#" class="nav-link active" routerLink="/home">Home</a>
+            </li>
+            <li class="nav-item">
+                <a href="#" class="nav-link" routerLink="/addUser">Add User</a>
+            </li>
+            <li class="nav-item">
+                <a href="#" class="nav-link" routerLink="/reports">Reports</a>
+            </li>
+            <li class="nav-item">
+                <a href="#" class="nav-link" (click)="logOut()">Logout</a>
+            </li>
+            
+    </ul>
+</nav>
+</header>
+<input type="text" [(ngModel)]="filter" class="form-control" placeholder="Serach text Here" />
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Occupation</th>
+            <th>Contact</th>
+            <th>Hobbies</th>
+            <!-- <th>Action</th> -->
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let clients of displayservice.clients | filter:filter| paginate:{itemsPerPage:5,currentPage:page}">
+           <td>{{clients.Users1}}</td>
+           <td>{{clients.Name}}</td>
+           <td>{{clients.Occupation}}</td>
+           <td>{{clients.Phone}}</td>
+           <td>{{clients.Hobby}}</td>
+           <!-- <td>
+            <button class="btn btn-sm btn-primary" (click)="edit(clients.Users1)">Edit</button>
+            <button class="btn btn-sm btn-danger" (click)="delete(clients.Users1)">X</button>
+           </td> -->
+        </tr>
+    </tbody>
+</table>
+
+<pagination-controls (pageChange)="page = $event"></pagination-controls>

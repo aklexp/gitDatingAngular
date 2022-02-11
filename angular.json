@@ -28,7 +28,9 @@
               "src/assets"
             ],
             "styles": [
-              "src/styles.scss"
+              "src/styles.scss",
+              "node_modules/bootstrap/scss/bootstrap.scss",
+              "node_modules/ngx-toastr/toastr.css"
             ],
             "scripts": []
           },
@@ -123,6 +125,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "practiceDatingApp"
+    }
+  },
+  "defaultProject": "practiceDatingApp",
+  "cli": {
+    "analytics": "5825e52e-7243-4f31-9469-d7413eed4237"
+  }
 }
